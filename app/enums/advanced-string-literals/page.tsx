@@ -137,7 +137,7 @@ const TabButton = ({ children, selected, onClick }: TabButtonProps) => (
 
 type PostCardsProps = { posts: Post[] };
 const PostCards = ({ posts }: PostCardsProps) => (
-  <Grid className={"max-w-max"}>
+  <Grid className={"min-w-lg max-w-lg"}>
     <AnimatePresence initial={false}>
       {posts.map((post) => (
         <PostCard post={post} key={post.id} />

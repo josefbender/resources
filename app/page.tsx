@@ -14,9 +14,10 @@ export default function Home() {
         <li>
           <Link href={"./enums"}>Enums</Link>
         </li>
+        <li>
+          <Link href={"./dnd"}>Drag And Drop</Link>
+        </li>
       </ul>
-      <br />
-      <Text>More coming soon ;)</Text>
     </div>
   );
 }

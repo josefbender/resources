@@ -1,5 +1,13 @@
 "use client";
+// core styles are required for all packages
+import "@mantine/core/styles.css";
 
+// other css files are required only if
+// you are using components from the corresponding package
+// import '@mantine/dates/styles.css';
+// import '@mantine/dropzone/styles.css';
+// import '@mantine/code-highlight/styles.css';
+// ...
 import { Flex, IconButton, Link, Text, Theme } from "@radix-ui/themes";
 import * as React from "react";
 import { ReactNode, useEffect, useState } from "react";
@@ -13,13 +21,20 @@ import {
 } from "lucide-react";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { useTheme } from "next-themes";
+import { createTheme, MantineProvider } from "@mantine/core";
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
 type LayoutProps = { children: ReactNode };
 const Layout = ({ children }: LayoutProps) => (
   <html lang="en">
     <body className={"min-h-screen"}>
       <ThemeProvider>
-        <LayoutBase>{children}</LayoutBase>
+        <MantineProvider theme={theme}>
+          <LayoutBase>{children}</LayoutBase>
+        </MantineProvider>
       </ThemeProvider>
     </body>
   </html>
@@ -36,7 +51,7 @@ function LayoutBase({ children }: LayoutProps) {
 
   return (
     <Theme
-      accentColor={"jade"}
+      accentColor={"orange"}
       radius="medium"
       appearance={
         !isMounted
