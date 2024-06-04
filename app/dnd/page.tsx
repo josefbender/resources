@@ -1,39 +1,32 @@
 "use client";
 import * as React from "react";
-import { Grid } from "./components/Grid";
-import { Column } from "./components/Column";
-import { Card } from "./components/Card";
-import { ColumnTitle } from "./components/ColumnTitle";
-import { useTodos } from "./useTodos";
+import { Heading, Link } from "@radix-ui/themes";
 
 export default function Dnd1() {
-  const { todos } = useTodos();
   return (
-    <Grid>
-      <Column>
-        <ColumnTitle color={"grey"}>Todo</ColumnTitle>
-        {todos
-          .filter((todo) => todo.state === "todo")
-          .map((todo, index) => (
-            <Card key={index}>{todo.text}</Card>
-          ))}
-      </Column>
-      <Column>
-        <ColumnTitle color={"blue"}>Doing</ColumnTitle>
-        {todos
-          .filter((todo) => todo.state === "doing")
-          .map((todo, index) => (
-            <Card key={index}>{todo.text}</Card>
-          ))}
-      </Column>
-      <Column>
-        <ColumnTitle color={"green"}>Done</ColumnTitle>
-        {todos
-          .filter((todo) => todo.state === "done")
-          .map((todo, index) => (
-            <Card key={index}>{todo.text}</Card>
-          ))}
-      </Column>
-    </Grid>
+    <div className={`[&>*]:mb-2 `}>
+      <Heading size={"8"} as={"h1"} mb={"4"}>
+        Enum Types
+      </Heading>
+      <ul>
+        <li>
+          <Link href={"/dnd/react-dnd"}>React DnD</Link>
+        </li>
+        <li>
+          <Link href={"/dnd/framer-motion"}>Framer Motion</Link>
+        </li>
+        <li>
+          <Link href={"/dnd/framer-motion-numbers"}>
+            Framer Motion (number only)
+          </Link>
+        </li>
+        <li>
+          <Link href={"/dnd/hello-pangea"}>@hello-pangea/dnd</Link>
+        </li>
+        <li>
+          <Link href={"/dnd/dnd-kit"}>Dnd Kit</Link>
+        </li>
+      </ul>
+    </div>
   );
 }
