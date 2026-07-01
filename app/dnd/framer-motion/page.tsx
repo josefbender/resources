@@ -22,7 +22,7 @@ export default function FramerMotionDnd() {
   return (
     <Grid>
       <Column>
-        <ColumnTitle color={"grey"}>Todo</ColumnTitle>
+        <ColumnTitle todoState="todo" />
         <Reorder.Group as={"div"} values={column1Todos} onReorder={updateTodos}>
           {column1Todos.map((todo, index) => (
             <Card key={todo.id} todo={todo} />
@@ -30,7 +30,7 @@ export default function FramerMotionDnd() {
         </Reorder.Group>
       </Column>
       <Column>
-        <ColumnTitle color={"blue"}>Doing</ColumnTitle>
+        <ColumnTitle todoState="doing" />
         <Reorder.Group
           as={"div"}
           axis={"y"}
@@ -43,7 +43,7 @@ export default function FramerMotionDnd() {
         </Reorder.Group>
       </Column>
       <Column>
-        <ColumnTitle color={"green"}>Done</ColumnTitle>
+        <ColumnTitle todoState="doing" />
         <Reorder.Group
           as={"div"}
           axis={"y"}

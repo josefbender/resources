@@ -16,7 +16,7 @@ export default function Dnd1() {
   const column1Todos = todos.filter((todo) => todo.state === "todo");
   const column2Todos = todos.filter((todo) => todo.state === "doing");
   const column3Todos = todos.filter((todo) => todo.state === "done");
-  function onDragEnd(event: DragEndEvent) {
+  function onDrag(event: DragEndEvent) {
     const { active, over } = event;
     if (!over) return;
     const overTodo = todos.find((todo) => todo.id === over?.id);
@@ -27,16 +27,8 @@ export default function Dnd1() {
       .findIndex((todo) => todo.id === overTodo.id);
     moveTodo(active.id + "", newState, indexWithinColumn);
   }
-  function onDragOver(event: DragEndEvent) {
-    const { active, over } = event;
-    if (!over) return;
-    const overTodo = todos.find((todo) => todo.id === over?.id);
-    if (!overTodo) return;
-    const newState = overTodo.state;
-    setTodoState(active.id + "", newState);
-  }
   return (
-    <DndContext onDragEnd={onDragEnd} onDragOver={onDragOver}>
+    <DndContext onDragEnd={onDrag} onDragOver={onDrag}>
       <Grid>
         <SortableContext
           id="todo"
@@ -44,7 +36,7 @@ export default function Dnd1() {
           strategy={verticalListSortingStrategy}
         >
           <Column id={"todo"}>
-            <ColumnTitle color={"grey"}>Todo</ColumnTitle>
+            <ColumnTitle todoState="todo" />
             {column1Todos.map((todo) => (
               <Card key={todo.id} todo={todo} />
             ))}
@@ -56,7 +48,7 @@ export default function Dnd1() {
           strategy={verticalListSortingStrategy}
         >
           <Column id={"doing"}>
-            <ColumnTitle color={"blue"}>Doing</ColumnTitle>
+            <ColumnTitle todoState="doing" />
             {column2Todos.map((todo) => (
               <Card key={todo.id} todo={todo} />
             ))}
@@ -68,7 +60,7 @@ export default function Dnd1() {
           strategy={verticalListSortingStrategy}
         >
           <Column id={"done"}>
-            <ColumnTitle color={"green"}>Done</ColumnTitle>
+            <ColumnTitle todoState="done" />
             {column3Todos.map((todo) => (
               <Card key={todo.id} todo={todo} />
             ))}

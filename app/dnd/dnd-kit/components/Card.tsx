@@ -15,6 +15,7 @@ export const Card = ({ todo }: CardProps) => {
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         transition,
+        zIndex: 99,
       }
     : undefined;
 

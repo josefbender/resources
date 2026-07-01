@@ -21,7 +21,7 @@ export default function HelloPangeaDnd() {
     <DragDropContext onDragEnd={onDragEnd}>
       <Grid>
         <Column id={"todo"}>
-          <ColumnTitle color={"grey"}>Todo</ColumnTitle>
+          <ColumnTitle todoState="todo" />
           {todos
             .filter((todo) => todo.state === "todo")
             .map((todo, index) => (
@@ -29,7 +29,7 @@ export default function HelloPangeaDnd() {
             ))}
         </Column>
         <Column id={"doing"}>
-          <ColumnTitle color={"blue"}>Doing</ColumnTitle>
+          <ColumnTitle todoState="doing" />
           {todos
             .filter((todo) => todo.state === "doing")
             .map((todo, index) => (
@@ -37,7 +37,7 @@ export default function HelloPangeaDnd() {
             ))}
         </Column>
         <Column id={"done"}>
-          <ColumnTitle color={"green"}>Done</ColumnTitle>
+          <ColumnTitle todoState="done" />
           {todos
             .filter((todo) => todo.state === "done")
             .map((todo, index) => (
